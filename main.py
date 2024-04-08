@@ -24,33 +24,6 @@ def start(message):
     btn1 = types.KeyboardButton("📌Добавить товар")
     markup.add(btn1,)
     bot.send_message(message.from_user.id, "Выберите, что вам нужно", reply_markup=markup)
-# @bot.message_handler(message = False)
-#     if os.path.isfile(f'files/{message.chat.id}/URL/URL.txt') and os.path.isfile(f'.files/{message.chat.id}/URL/price.txt'):
-#         print('i')
-#         f = open(f'files/{message.chat.id}/URL/URL.txt', 'r')
-#         URL = f.readline()
-#         f.close()
-#         driver = webdriver.Chrome()
-#         driver.get(URL)
-#         pause(randint(7, 11))
-#         soup = bs(driver.page_source, 'lxml')
-#         p1 = soup.find('ins', class_='price-block__final-price').get_text(strip=True)
-#         price = int(re.sub("[^0-9]","" , p1))
-#         print(price)
-#         f = open(f'files/{message.chat.id}/URL/price.txt','r+')
-#         old_price = int(f.readline())
-#         f.close()
-#         if price < old_price:
-#             difference = old_price - price
-#             bot.send_message(message.from_user.id, f"Цена на товар упала на {difference}, сейчас цена равна {price}")
-#             f = open(f'files/{message.chat.id}/URL/price.txt', 'w+')
-#             f.write(str(price))
-#             f.close()
-#         elif price > old_price:
-#             bot.send_message(message.from_user.id, f"Цена выросла. Нынешняя цена: {price}")
-#             f = open(f'files/{message.chat.id}/URL/price.txt', 'w+')
-#             f.write(str(price))
-#             f.close()
 @bot.message_handler(func=lambda message: True)
 def get_text_messages(message):
 
@@ -118,12 +91,3 @@ def URL_reader(message):
         f.write(message.text)
         f.close()
 bot.polling(none_stop=True, interval=0)
-#def URL_assigner(message):
-# if __name__ == "__main__":
-#     get_text_messages()
-#     URL_reader()
-#     cycle()
-
-#     threading.Thread(target=lambda: bot.infinity_polling()).start()
-#     threading.Thread(target=lambda: cycle()).start()
-
